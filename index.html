@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generatie bepalen</title>
+<style>
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #000;
+    z-index: 1000;
+    max-width: 80%;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<button class="btn" onclick="showPopup()">Bepaal Generatie</button>
+
+<div id="popup" class="popup">
+  <p>Kies product:</p>
+  <button class="btn" onclick="showAirpods()">Airpods</button>
+  <button class="btn" onclick="showCase()">Case</button>
+  <p>Kies het juiste product en leer hoe je de generatie van je Airpods bepaalt.</p>
+</div>
+
+<script>
+  function showPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+  }
+
+  function showAirpods() {
+    var popup = document.getElementById("popup");
+    popup.innerHTML = `
+      <p>Zijn je Airpods verbonden met je smartphone?</p>
+      <button class="btn" onclick="showSteps()">Ja</button>
+      <button class="btn" onclick="showNoSteps()">Nee</button>
+      <p>Ga naar instellingen > Bluetooth op je apparaat. Als je je Airpods ziet onder 'Mijn apparaten', kun je op Verbinden drukken.</p>
+    `;
+  }
+
+  function showSteps() {
+    var popup = document.getElementById("popup");
+    popup.innerHTML = `
+      <p>Stap 1: Ga naar Instellingen > Bluetooth</p>
+      <p>Stap 2: Klik op het pictogram (i) naast de AirPods</p>
+      <p>Stap 3: Kijk naar het modelnummer van je AirPods</p>
+      <button class="btn" onclick="checkModel('A2032')">A2032 of A2031</button>
+      <button class="btn" onclick="checkModel('A2084')">A2084 of A2083</button>
+      <button class="btn" onclick="checkModel('A2565')">A2565 of A2564</button>
+      <button class="btn" onclick="showGravure()">Geen van deze</button>
+    `;
+  }
+
+  function checkModel(model) {
+    var popup = document.getElementById("popup");
+    var result = "";
+
+    if (model === 'A2032') {
+      result = "Je hebt Airpods 2";
+    } else if (model === 'A2084') {
+      result = "Je hebt Airpods Pro";
+    } else if (model === 'A2565') {
+      result = "Je hebt Airpods 3";
+    }
+
+    popup.innerHTML = result;
+  }
+
+  function showGravure() {
+    var popup = document.getElementById("popup");
+    popup.innerHTML = `
+      <p>Kijk naar de laatste twee cijfers van het 5-cijferige modelnummer AXXXX op de gravure van je Airpods. Mogelijk hebt u een vergrootglas nodig.</p>
+      <img src="airpods_gravure.jpg" alt="Airpods Gravure" width="200">
+      <button class="btn" onclick="checkGravure('31')">31 of 32</button>
+      <button class="btn" onclick="checkGravure('83')">83 of 84</button>
+      <button class="btn" onclick="checkGravure('64')">64 of 65</button>
+    `;
+  }
+
+  function checkGravure(ending) {
+    var popup = document.getElementById("popup");
+    var result = "";
+
+    if (ending === '31') {
+      result = "Je hebt Airpods 2";
+    } else if (ending === '83') {
+      result = "Je hebt Airpods Pro";
+    } else if (ending === '64') {
+      result = "Je hebt Airpods 3";
+    }
+
+    popup.innerHTML = result;
+  }
+
+  function showNoSteps() {
+    var popup = document.getElementById("popup");
+    popup.innerHTML = "Kijk naar de laatste twee cijfers van het 5-cijferige modelnummer AXXXX op de gravure van je Airpods. Mogelijk hebt u een vergrootglas nodig.";
+  }
+</script>
+
+</body>
+</html>
