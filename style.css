@@ -45,8 +45,9 @@ html,
       background-color: #2bc8f9;
       color: white;
       font-weight: bolder;
-      border: none;
       padding: 0.5rem;
+      border: 1px solid;
+      border-color: rgba(0, 0, 0, 5%);
     }
 
     #initialButton:hover,
@@ -56,6 +57,7 @@ html,
       opacity: 1;
       outline: none;
       cursor: pointer;
+      border-color: rgba(0, 0, 0, .2);;
     }
 
     .buttoncontainer {
