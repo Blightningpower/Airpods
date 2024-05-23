@@ -146,3 +146,29 @@ button:hover {
   border: none;
   background-position-x: center;
 }
+
+.close-button {
+  font-size: 25px;
+  font-weight: bold;
+  color: #2bc8f9;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 10px;
+  border: none;
+  background: none;
+}
+
+.close-button:hover {
+  color: red;
+  box-shadow: none;
+}
+
+.alignButtons {
+  display: block;
+}
+
+.result-close-button {
+  position: absolute;
+  top: 20px;
+  right: 2rem;
+}

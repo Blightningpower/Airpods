@@ -1,126 +1,165 @@
+let initialButton = document.getElementById('initialButton');
+let popup = document.getElementById('popup');
+
 function showPopup() {
-  document.getElementById('popup').style.display = 'flex';
-  document.getElementById('initialButton').style.display = 'none';
+  popup.style.display = 'flex';
+  initialButton.style.display = 'none';
 }
 
 function hidePopup() {
-  document.getElementById('popup').style.display = 'none';
-  document.getElementById('initialButton').style.display = 'flex';
+  popup.style.display = 'none';
+  initialButton.style.display = 'flex';
+}
+
+function closeButton() {
+  hidePopup();
+  initialButton.addEventListener('click', chooseProduct);
+}
+
+function goBack() {
+  hidePopup();
 }
 
 function chooseProduct(product) {
-  document.getElementById('popup').innerHTML = `
+  let popupContent = `
+  <div class="alignButtons">
     <button class="goBackButton" onclick="goBack()">Ga terug</button>
-    <div class="elementscontainer">
+    <button class="close-button" onclick="closeButton()">X</button>
+  </div>
+  <div class="elementscontainer">
     <p class="firstText questionText">Kies product:</p>
     <div class="buttoncontainer">
-    <div class="backgroundImageDivAirpods">
-      <button onclick="chooseProduct('Airpods')">Airpods</button>
+      <div class="backgroundImageDivAirpods">
+        <button onclick="chooseProduct('Airpods')">Airpods</button>
+      </div>
+      <div class="backgroundImageDivCase">
+        <button onclick="chooseProduct('Case')">Case</button>
+      </div>
     </div>
-    <div class="backgroundImageDivCase">
-      <button onclick="chooseProduct('Case')">Case</button>
-    </div>
-  </div>
     <p>Kies het juiste product en leer hoe je de generatie van je Airpods bepaalt.</p>
-    </div?
+  </div>
   `;
+
   if (product === 'Airpods') {
-    document.getElementById('popup').innerHTML = `
+    popupContent = `
+    <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
-      <div class="elementscontainer">
+      <button class="close-button" onclick="closeButton()">X</button>
+    </div>
+    <div class="elementscontainer">
       <p class="firstText questionText">Zijn je Airpods verbonden met je smartphone?</p>
       <div class="backgroundImageDivConnected">
-      <div class="buttoncontainer">
-      <button onclick="connectedToPhone('Ja')">Ja</button>
-      <button onclick="connectedToPhone('Nee')">Nee</button>
-      </div>
+        <div class="buttoncontainer">
+          <button onclick="connectedToPhone('Ja')">Ja</button>
+          <button onclick="connectedToPhone('Nee')">Nee</button>
+        </div>
       </div>
       <span>Ga naar instellingen > Bluetooth op je apparaat. Als je je Airpods ziet onder 'Mijn apparaten', kun je op Verbinden drukken.</span>
-      </div>
+    </div>
     `;
   } else if (product === 'Case') {
-    document.getElementById('popup').innerHTML = `
+    popupContent = `
+    <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
-      <div class="elementscontainer">
+      <button class="close-button" onclick="closeButton()">X</button>
+    </div>
+    <div class="elementscontainer">
       <ul>
-      <li>Stap 1: Kijk voor het modelnummer aan de binnenkant van het deksel van de case</li>
-      <li>Stap 2: Kijk naar de eerste vier tekens van het modelnummer aan de binnenkant van het deksel van de case</li>
+        <li>Stap 1: Kijk voor het modelnummer aan de binnenkant van het deksel van de case</li>
+        <li>Stap 2: Kijk naar de eerste vier tekens van het modelnummer aan de binnenkant van het deksel van de case</li>
       </ul>
       <p questionText>Wat is het modelnummer?</p>
       <div class="buttoncontainer">
-      <button onclick="determineCase('MV7N')">MV7N</button>
-      <button onclick="determineCase('MWP2')">MWP2</button>
-      <button onclick="determineCase('MME7')">MME7</button>
+        <button onclick="determineCase('MV7N')">MV7N</button>
+        <button onclick="determineCase('MWP2')">MWP2</button>
+        <button onclick="determineCase('MME7')">MME7</button>
       </div>
-      </div>
+    </div>
     `;
   }
+  popup.innerHTML = popupContent;
 }
 
 function connectedToPhone(answer) {
+  let popupContent = '';
   if (answer === 'Ja') {
-    document.getElementById('popup').innerHTML = `
-    <button class="goBackButton" onclick="chooseProduct()('Airpods')">Ga terug</button>
+    popupContent = `
+    <div class="alignButtons">
+      <button class="goBackButton" onclick="chooseProduct('Airpods')">Ga terug</button>
+      <button class="close-button" onclick="closeButton()">X</button>
+    </div>
     <div class="elementscontainer">
-    <ul>
-    <li>Stap 1: Ga naar Instellingen > Bluetooth</li>
-    <li>Stap 2: Klik op het pictogram (i) naast de Airpods</li>
-    <li>Stap 3: Kijk naar het modelnummer van je Airpods</li>
-    </ul>
-    <p class="questionText">Wat is het modelnummer?</p>
-    <div class="buttoncontainer">
-    <button onclick="determineProduct('MV7N')">A2032 of A2031</button>
-    <button onclick="determineProduct('MWP2')">A2084 of A2083</button>
-    <button onclick="determineProduct('MME7')">A2565 of A2564</button>
-    <button onclick="determineProduct('None')">Geen van deze</button>
+      <ul>
+        <li>Stap 1: Ga naar Instellingen > Bluetooth</li>
+        <li>Stap 2: Klik op het pictogram (i) naast de Airpods</li>
+        <li>Stap 3: Kijk naar het modelnummer van je Airpods</li>
+      </ul>
+      <p class="questionText">Wat is het modelnummer?</p>
+      <div class="buttoncontainer">
+        <button onclick="determineProduct('MV7N')">A2032 of A2031</button>
+        <button onclick="determineProduct('MWP2')">A2084 of A2083</button>
+        <button onclick="determineProduct('MME7')">A2565 of A2564</button>
+        <button onclick="determineProduct('None')">Geen van deze</button>
+      </div>
     </div>
-    </div>
-  `;
+    `;
   } else if (answer === 'Nee') {
-    document.getElementById('popup').innerHTML = `
-    <button class="goBackButton" onclick="chooseProduct()('Airpods')">Ga terug</button>
+    popupContent = `
+    <div class="alignButtons">
+      <button class="goBackButton" onclick="chooseProduct('Airpods')">Ga terug</button>
+      <button class="close-button" onclick="closeButton()">X</button>
+    </div>
     <div class="elementscontainer">
-    <p class="firstText questionText">Heb je de originele verpakking nog?</p>
-    <div class="backgroundImageDivOriginalCase">
-    <div class="buttoncontainer">
-    <button onclick="haveOriginalPackaging('Ja')">Ja</button>
-    <button onclick="haveOriginalPackaging('Nee')">Nee</button>
+      <p class="firstText questionText">Heb je de originele verpakking nog?</p>
+      <div class="backgroundImageDivOriginalCase">
+        <div class="buttoncontainer">
+          <button onclick="haveOriginalPackaging('Ja')">Ja</button>
+          <button onclick="haveOriginalPackaging('Nee')">Nee</button>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-  `;
+    `;
   }
+  popup.innerHTML = popupContent;
 }
 
 function haveOriginalPackaging(answer) {
+  let popupContent = '';
   if (answer === 'Ja') {
-    document.getElementById('popup').innerHTML = `
+    popupContent = `
+    <div class="alignButtons">
       <button class="goBackButton" onclick="connectedToPhone('Nee')">Ga terug</button>
-      <div class="elementscontainer">
+      <button class="close-button" onclick="closeButton()">X</button>
+    </div>
+    <div class="elementscontainer">
       <p class="firstText">U vindt het productnummer op de originele verpakking. Kijk naar de eerste vier tekens.</p>
       <p class="questionText">Wat is het productnummer?</p>
       <div class="buttoncontainer">
-      <button onclick="determineProduct('MV7N')">MV7N</button>
-      <button onclick="determineProduct('MWP2')">MWP2</button>
-      <button onclick="determineProduct('MME7')">MME7</button>
-      <button onclick="determineProduct('None')">Geen van deze</button>
+        <button onclick="determineProduct('MV7N')">MV7N</button>
+        <button onclick="determineProduct('MWP2')">MWP2</button>
+        <button onclick="determineProduct('MME7')">MME7</button>
+        <button onclick="determineProduct('None')">Geen van deze</button>
       </div>
-      </div>
+    </div>
     `;
   } else if (answer === 'Nee') {
-    document.getElementById('popup').innerHTML = `
+    popupContent = `
+    <div class="alignButtons">
       <button class="goBackButton" onclick="connectedToPhone('Nee')">Ga terug</button>
-      <div class="elementscontainer">
+      <button class="close-button" onclick="closeButton()">X</button>
+    </div>
+    <div class="elementscontainer">
       <p class="firstText questionText">Kijk naar de laatste twee cijfers van het 5-cijferige modelnummer AXXXX op de gravure van je Airpods. Mogelijk hebt u een vergrootglas nodig.</p>
       <img src="img/airpod_with_code04_lastTwoDigits.webp" alt="airpod_with_code04_lastTwoDigits.webp">
       <div class="buttoncontainer">
-      <button onclick="determineAirpods('31')">31 of 32</button>
-      <button onclick="determineAirpods('83')">83 of 84</button>
-      <button onclick="determineAirpods('64')">64 of 65</button>
+        <button onclick="determineAirpods('31')">31 of 32</button>
+        <button onclick="determineAirpods('83')">83 of 84</button>
+        <button onclick="determineAirpods('64')">64 of 65</button>
       </div>
-      </div>
+    </div>
     `;
   }
+  popup.innerHTML = popupContent;
 }
 
 function determineCase(model) {
@@ -131,18 +170,21 @@ function determineCase(model) {
   } else if (model === 'MME7') {
     displayResultWithGoBack("Je hebt Airpods 3.");
   } else if (model === 'None') {
-    document.getElementById('popup').innerHTML = `
+    popup.innerHTML = `
+    <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
-      <div class="elementscontainer">
-    <p class="firstText questionText">Kijk naar de laatste twee cijfers van het 5-cijferige modelnummer AXXXX op de gravure van je Airpods. Mogelijk hebt u een vergrootglas nodig.</p>
-    <img src="img/airpod_with_code04_lastTwoDigits.webp" alt="airpod_with_code04_lastTwoDigits.webp">
-    <div class="buttoncontainer">
-    <button onclick="determineAirpods('31')">31 of 32</button>
-    <button onclick="determineAirpods('83')">83 of 84</button>
-    <button onclick="determineAirpods('64')">64 of 65</button>
+      <button class="close-button" onclick="closeButton()">X</button>
     </div>
+    <div class="elementscontainer">
+      <p class="firstText questionText">Kijk naar de laatste twee cijfers van het 5-cijferige modelnummer AXXXX op de gravure van je Airpods. Mogelijk hebt u een vergrootglas nodig.</p>
+      <img src="img/airpod_with_code04_lastTwoDigits.webp" alt="airpod_with_code04_lastTwoDigits.webp">
+      <div class="buttoncontainer">
+        <button onclick="determineAirpods('31')">31 of 32</button>
+        <button onclick="determineAirpods('83')">83 of 84</button>
+        <button onclick="determineAirpods('64')">64 of 65</button>
+      </div>
     </div>
-  `;
+    `;
   }
 }
 
@@ -154,28 +196,34 @@ function determineProduct(product) {
   } else if (product === 'MME7') {
     displayResultWithGoBack("Je hebt Airpods 3.");
   } else if (product === 'None') {
-    document.getElementById('popup').innerHTML = `
+    popup.innerHTML = `
+    <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
-      <div class="elementscontainer">
-    <p class="firstText questionText">Kijk naar de laatste twee cijfers van het 5-cijferige modelnummer AXXXX op de gravure van je Airpods. Mogelijk hebt u een vergrootglas nodig.</p>
-    <img src="img/airpod_with_code04_lastTwoDigits.webp" alt="airpod_with_code04_lastTwoDigits.webp">
-    <div class="buttoncontainer">
-    <button onclick="determineAirpods('31')">31 of 32</button>
-    <button onclick="determineAirpods('83')">83 of 84</button>
-    <button onclick="determineAirpods('64')">64 of 65</button>
+      <button class="close-button" onclick="closeButton()">X</button>
     </div>
+    <div class="elementscontainer">
+      <p class="firstText questionText">Kijk naar de laatste twee cijfers van het 5-cijferige modelnummer AXXXX op de gravure van je Airpods. Mogelijk hebt u een vergrootglas nodig.</p>
+      <img src="img/airpod_with_code04_lastTwoDigits.webp" alt="airpod_with_code04_lastTwoDigits.webp">
+      <div class="buttoncontainer">
+        <button onclick="determineAirpods('31')">31 of 32</button>
+        <button onclick="determineAirpods('83')">83 of 84</button>
+        <button onclick="determineAirpods('64')">64 of 65</button>
+      </div>
     </div>
-  `;
+    `;
   }
 }
 
 function displayResultWithGoBack(result) {
-  document.getElementById('popup').innerHTML = `
-  <div class="elementscontainer">
-  <p>${result}</p>
-  <button class="startOverButton" onclick="chooseProduct()">Begin opnieuw</button>
+  popup.innerHTML = `
+  <div class="result">
+    <button class="close-button result-close-button" onclick="closeButton()">X</button>
+    <div class="elementscontainer">
+      <p>${result}</p>
+      <button class="startOverButton" onclick="chooseProduct()">Begin opnieuw</button>
+    </div>
   </div>
-`;
+  `;
 }
 
 function determineAirpods(model) {
@@ -188,8 +236,4 @@ function determineAirpods(model) {
   } else if (model === 'None') {
     displayResultWithGoBack("Je hebt Airpods Gen 1, die zijn helaas niet beschikbaar.");
   }
-}
-
-function goBack() {
-  hidePopup();
 }
