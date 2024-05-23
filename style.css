@@ -1,66 +1,148 @@
 html,
-    body {
-      min-height: 100vh;
-    }
+body {
+  min-height: 100vh;
+}
 
-    body {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    p {
-      font-family: "Noto Sans Carian", sans-serif;
-      font-size: 100%;
-      margin: auto;
-    }
+p {
+  font-family: "Noto Sans Carian", sans-serif;
+  font-size: 100%;
+  margin: auto;
+}
 
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      padding: 20px;
-      border: 2px solid #333;
-      min-width: 30rem;
-      min-height: 15rem;
-      text-align: center;
-      border-radius: 50px;
-      align-items: center;
-      flex-direction: column;
-    }
+ul {
+  margin: 2rem 0;
+}
 
-    @media only screen and (max-width: 600px) {
-      .popup {
-        min-width: 20rem;
-      }
-    }
+li {
+  text-align: justify;
+}
 
-    #initialButton,
-    button {
-      margin: auto 1rem;
-      background-color: #2bc8f9;
-      color: white;
-      font-weight: bolder;
-      padding: 0.5rem;
-      border: 1px solid;
-      border-color: rgba(0, 0, 0, 5%);
-    }
+span {
+  font-size: small;
+}
 
-    #initialButton:hover,
-    button:hover {
-      box-shadow: inset 0 0 0 100px rgba(0, 0, 0, .2);
-      color: #fff;
-      opacity: 1;
-      outline: none;
-      cursor: pointer;
-      border-color: rgba(0, 0, 0, .2);;
-    }
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  min-width: 28rem;
+  max-width: 25rem;
+  min-height: 25rem;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  border: 4px solid;
+  border-radius: 2px;
+  background-color: #f5f5f7;
+  justify-content: center;
+}
 
-    .buttoncontainer {
-      display: flex;
-      justify-content: center;
-    }
+@media only screen and (max-width: 600px) {
+  .popup {
+    min-width: 20rem;
+  }
+}
+
+#initialButton,
+button {
+  margin: auto;
+  background-color: #2bc8f9;
+  color: white;
+  font-weight: bolder;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 5%);
+}
+
+#initialButton:hover,
+button:hover {
+  box-shadow: inset 0 0 0 100px rgba(0, 0, 0, .2);
+  color: #fff;
+  opacity: 1;
+  outline: none;
+  cursor: pointer;
+  border-color: rgba(0, 0, 0, .2);
+  ;
+}
+
+.buttoncontainer {
+  display: flex;
+  margin: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: 6rem;
+}
+
+.goBackButton {
+  margin: 1rem 20rem 0 0;
+}
+
+.firstText {
+  margin: 2rem 0 1rem;
+}
+
+.questionText {
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.elementscontainer {
+  padding: 2%;
+  margin: 0 auto;
+  background-color: #f5f5f7;
+  border-radius: 2px;
+}
+
+.startOverButton {
+  margin-top: 2rem;
+}
+
+[class*="backgroundImage"] {
+  min-width: 7rem;
+  background-repeat: no-repeat;
+  padding: 7rem 2% 2%;
+  border-radius: 2px;
+  border: 2px solid;
+  background-color: #f5f5f7;
+}
+
+.backgroundImageDivAirpods {
+  background-image: url(img/airpods_new.webp);
+  background-color: #fff;
+}
+
+.backgroundImageDivCase {
+  background-image: url(img/case_new.webp);
+  background-color: #fff;
+}
+
+.backgroundImageDivConnected {
+  background-image: url(img/airpods02connected.webp);
+  border: none;
+  background-position-x: center;
+  margin-bottom: 15px;
+}
+
+.backgroundImageDivConnected .buttoncontainer {
+  margin: -10px;
+}
+
+[alt="airpod_with_code04_lastTwoDigits.webp"] {
+  width: 10vw;
+}
+
+.backgroundImageDivOriginalCase {
+  background-image: url(img/original-packaging-300x137.webp);
+  border: none;
+  background-position-x: center;
+}

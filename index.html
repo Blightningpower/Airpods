@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
- 
+
   <title>Airpods Generation Determination</title>
 
   <!--links for the Favicons-->
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
 
   <!--meta tags for responsiveness-->
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -20,7 +20,7 @@
 
   <!--Link to scriptfiles-->
   <script src="script.js" defer></script>
-  
+
 </head>
 
 <body>
@@ -28,14 +28,19 @@
   <button id="initialButton" onclick="showPopup()">Bepaal Generatie</button>
 
   <div id="popup" class="popup">
-    <p>Kies product:</p>
-    <div class="buttoncontainer">
-      <button onclick="chooseProduct('Airpods')">Airpods</button>
-      <button onclick="chooseProduct('Case')">Case</button>
+    <button class="goBackButton" onclick="goBack()">Ga terug</button>
+    <div class="elementscontainer">
+      <p class="firstText">Kies product:</p>
+      <div class="buttoncontainer">
+        <div class="backgroundImageDivAirpods">
+          <button onclick="chooseProduct('Airpods')">Airpods</button>
+        </div>
+        <div class="backgroundImageDivCase">
+          <button onclick="chooseProduct('Case')">Case</button>
+        </div>
+      </div>
+      <p>Kies het juiste product en leer hoe je de generatie van je Airpods bepaalt.</p>
     </div>
-    <br><br>
-    <button onclick="goBack()">Ga terug</button>
-    <p>Kies het juiste product en leer hoe je de generatie van je Airpods bepaalt.</p>
   </div>
 
 </body>
