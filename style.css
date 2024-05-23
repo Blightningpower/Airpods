@@ -49,8 +49,14 @@ span {
 
 @media only screen and (max-width: 600px) {
   .popup {
-    min-width: 20rem;
-  }
+    max-width: 23rem;
+    min-width: 23rem;
+    min-height: 27rem;
+}
+
+button.goBackButton {
+  margin: 0 47vw 0 0;
+}
 }
 
 #initialButton,
