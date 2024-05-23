@@ -37,7 +37,7 @@ span {
   padding: 20px;
   min-width: 28rem;
   max-width: 25rem;
-  min-height: 25rem;
+  min-height: 32.5363rem;
   text-align: center;
   align-items: center;
   flex-direction: column;
@@ -165,10 +165,37 @@ button:hover {
 
 .alignButtons {
   display: block;
+  position: absolute;
+  top: 50px;
 }
 
 .result-close-button {
   position: absolute;
-  top: 20px;
+  top: 3.75rem;
   right: 2rem;
+}
+
+#progressBar {
+  width: 100%;
+  /* Make the progress bar fill the entire width of its container */
+  height: 30px;
+  /* Set the height of the progress bar */
+  border-radius: 10px;
+  /* Round the corners of the progress bar */
+  position: absolute;
+  top: 0;
+  /* Add transition for smooth animation */
+  transition: width 0.3s ease-in-out;
+}
+
+/* Style for the progress bar track (background) */
+#progressBar::-webkit-progress-bar {
+  background-color: #f0f0f0;
+  /* Set the background color of the progress bar track */
+}
+
+/* Style for the progress bar value (filled part) */
+#progressBar::-webkit-progress-value {
+  background-color: #007bff;
+  /* Set the color of the filled part of the progress bar */
 }

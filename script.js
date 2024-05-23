@@ -1,5 +1,12 @@
 let initialButton = document.getElementById('initialButton');
 let popup = document.getElementById('popup');
+let progressBar = document.getElementById('progressBar');
+let totalSteps = 5; // Total number of steps in the process
+
+function updateProgressBar(currentStep) {
+  let progress = (currentStep / totalSteps) * 100;
+  progressBar.value = progress;
+}
 
 function showPopup() {
   popup.style.display = 'flex';
@@ -22,6 +29,7 @@ function goBack() {
 
 function chooseProduct(product) {
   let popupContent = `
+  <progress id="progressBar" value="0" max="100"></progress>
   <div class="alignButtons">
     <button class="goBackButton" onclick="goBack()">Ga terug</button>
     <button class="close-button" onclick="closeButton()">X</button>
@@ -42,6 +50,7 @@ function chooseProduct(product) {
 
   if (product === 'Airpods') {
     popupContent = `
+    <progress id="progressBar" value="20" max="100"></progress>
     <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
@@ -59,6 +68,7 @@ function chooseProduct(product) {
     `;
   } else if (product === 'Case') {
     popupContent = `
+    <progress id="progressBar" value="20" max="100"></progress>
     <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
@@ -78,12 +88,14 @@ function chooseProduct(product) {
     `;
   }
   popup.innerHTML = popupContent;
+  updateProgressBar(1);
 }
 
 function connectedToPhone(answer) {
   let popupContent = '';
   if (answer === 'Ja') {
     popupContent = `
+    <progress id="progressBar" value="40" max="100"></progress>
     <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct('Airpods')">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
@@ -105,6 +117,7 @@ function connectedToPhone(answer) {
     `;
   } else if (answer === 'Nee') {
     popupContent = `
+    <progress id="progressBar" value="40" max="100"></progress>
     <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct('Airpods')">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
@@ -121,12 +134,14 @@ function connectedToPhone(answer) {
     `;
   }
   popup.innerHTML = popupContent;
+  updateProgressBar(2);
 }
 
 function haveOriginalPackaging(answer) {
   let popupContent = '';
   if (answer === 'Ja') {
     popupContent = `
+    <progress id="progressBar" value="60" max="100"></progress>
     <div class="alignButtons">
       <button class="goBackButton" onclick="connectedToPhone('Nee')">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
@@ -144,6 +159,7 @@ function haveOriginalPackaging(answer) {
     `;
   } else if (answer === 'Nee') {
     popupContent = `
+    <progress id="progressBar" value="60" max="100"></progress>
     <div class="alignButtons">
       <button class="goBackButton" onclick="connectedToPhone('Nee')">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
@@ -160,6 +176,7 @@ function haveOriginalPackaging(answer) {
     `;
   }
   popup.innerHTML = popupContent;
+  updateProgressBar(3);
 }
 
 function determineCase(model) {
@@ -171,6 +188,7 @@ function determineCase(model) {
     displayResultWithGoBack("Je hebt Airpods 3.");
   } else if (model === 'None') {
     popup.innerHTML = `
+    <progress id="progressBar" value="80" max="100"></progress>
     <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
@@ -186,6 +204,7 @@ function determineCase(model) {
     </div>
     `;
   }
+  updateProgressBar(4);
 }
 
 function determineProduct(product) {
@@ -197,6 +216,7 @@ function determineProduct(product) {
     displayResultWithGoBack("Je hebt Airpods 3.");
   } else if (product === 'None') {
     popup.innerHTML = `
+    <progress id="progressBar" value="80" max="100"></progress>
     <div class="alignButtons">
       <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
@@ -212,10 +232,12 @@ function determineProduct(product) {
     </div>
     `;
   }
+  updateProgressBar(4);
 }
 
 function displayResultWithGoBack(result) {
   popup.innerHTML = `
+  <progress id="progressBar" value="100" max="100"></progress>
   <div class="result">
     <button class="close-button result-close-button" onclick="closeButton()">X</button>
     <div class="elementscontainer">
@@ -224,6 +246,7 @@ function displayResultWithGoBack(result) {
     </div>
   </div>
   `;
+  updateProgressBar(5);
 }
 
 function determineAirpods(model) {
