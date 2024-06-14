@@ -52,11 +52,11 @@ span {
     max-width: 23rem;
     min-width: 23rem;
     min-height: 27rem;
-}
+  }
 
-button.goBackButton {
-  margin: 0 47vw 0 0;
-}
+  button.goBackButton {
+    margin: 0 47vw 0 0;
+  }
 }
 
 #initialButton,
@@ -98,7 +98,7 @@ button:hover {
 }
 
 .questionText {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: left;
 }
 
@@ -162,6 +162,9 @@ button:hover {
   padding: 5px 10px;
   border: none;
   background: none;
+  position: fixed;
+  right: 0;
+  margin: 0 2rem 0 0;
 }
 
 .close-button:hover {
@@ -173,6 +176,7 @@ button:hover {
   display: block;
   position: absolute;
   top: 50px;
+  margin: -1rem;
 }
 
 .result-close-button {
@@ -204,4 +208,8 @@ button:hover {
 #progressBar::-webkit-progress-value {
   background-color: #007bff;
   /* Set the color of the filled part of the progress bar */
+}
+
+.result {
+  min-width: -webkit-fill-available;
 }

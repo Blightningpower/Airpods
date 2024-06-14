@@ -31,7 +31,6 @@ function chooseProduct(product) {
   let popupContent = `
   <progress id="progressBar" value="0" max="100"></progress>
   <div class="alignButtons">
-    <button class="goBackButton" onclick="goBack()">Ga terug</button>
     <button class="close-button" onclick="closeButton()">X</button>
   </div>
   <div class="elementscontainer">
@@ -83,6 +82,8 @@ function chooseProduct(product) {
         <button onclick="determineCase('MV7N')">MV7N</button>
         <button onclick="determineCase('MWP2')">MWP2</button>
         <button onclick="determineCase('MME7')">MME7</button>
+        <button onclick="determineCase('MQD8')">MQD8</button>
+        <button onclick="determineCase('None')">Geen van deze</button>
       </div>
     </div>
     `;
@@ -153,6 +154,7 @@ function haveOriginalPackaging(answer) {
         <button onclick="determineProduct('MV7N')">MV7N</button>
         <button onclick="determineProduct('MWP2')">MWP2</button>
         <button onclick="determineProduct('MME7')">MME7</button>
+        <button onclick="determineProduct('MQD8')">MQD8</button>
         <button onclick="determineProduct('None')">Geen van deze</button>
       </div>
     </div>
@@ -171,6 +173,7 @@ function haveOriginalPackaging(answer) {
         <button onclick="determineAirpods('31')">31 of 32</button>
         <button onclick="determineAirpods('83')">83 of 84</button>
         <button onclick="determineAirpods('64')">64 of 65</button>
+        <button onclick="determineAirpods('47')">47,48 of 49</button>
       </div>
     </div>
     `;
@@ -186,11 +189,13 @@ function determineCase(model) {
     displayResultWithGoBack("Je hebt Airpods Pro.");
   } else if (model === 'MME7') {
     displayResultWithGoBack("Je hebt Airpods 3.");
+  } else if (model === 'MQD8') {
+    displayResultWithGoBack("Je hebt Airpods Pro 2.");
   } else if (model === 'None') {
     popup.innerHTML = `
     <progress id="progressBar" value="80" max="100"></progress>
     <div class="alignButtons">
-      <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
+      <button class="goBackButton" onclick="chooseProduct('Case')">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
     </div>
     <div class="elementscontainer">
@@ -200,6 +205,7 @@ function determineCase(model) {
         <button onclick="determineAirpods('31')">31 of 32</button>
         <button onclick="determineAirpods('83')">83 of 84</button>
         <button onclick="determineAirpods('64')">64 of 65</button>
+        <button onclick="determineAirpods('47')">47,48 of 49</button>
       </div>
     </div>
     `;
@@ -214,11 +220,13 @@ function determineProduct(product) {
     displayResultWithGoBack("Je hebt Airpods Pro.");
   } else if (product === 'MME7') {
     displayResultWithGoBack("Je hebt Airpods 3.");
+  } else if (product === 'MQD8') {
+    displayResultWithGoBack("Je hebt Airpods Pro 2.");
   } else if (product === 'None') {
     popup.innerHTML = `
     <progress id="progressBar" value="80" max="100"></progress>
     <div class="alignButtons">
-      <button class="goBackButton" onclick="chooseProduct()">Ga terug</button>
+      <button class="goBackButton" onclick="connectedToPhone('Ja')">Ga terug</button>
       <button class="close-button" onclick="closeButton()">X</button>
     </div>
     <div class="elementscontainer">
@@ -228,6 +236,7 @@ function determineProduct(product) {
         <button onclick="determineAirpods('31')">31 of 32</button>
         <button onclick="determineAirpods('83')">83 of 84</button>
         <button onclick="determineAirpods('64')">64 of 65</button>
+        <button onclick="determineAirpods('47')">47,48 of 49</button>
       </div>
     </div>
     `;
@@ -256,7 +265,9 @@ function determineAirpods(model) {
     displayResultWithGoBack("Je hebt Airpods Pro.");
   } else if (model === '64') {
     displayResultWithGoBack("Je hebt Airpods 3.");
-  } else if (model === 'None') {
-    displayResultWithGoBack("Je hebt Airpods Gen 1, die zijn helaas niet beschikbaar.");
+  }  else if (model === '47') {
+      displayResultWithGoBack("Je hebt Airpods pro 2.");
+    } else if (model === 'None') {
+      displayResultWithGoBack("Je hebt Airpods Gen 1, die zijn helaas niet beschikbaar.");
+    }
   }
-}
